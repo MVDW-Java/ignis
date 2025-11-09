@@ -1,5 +1,5 @@
 import cairo
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from ignis import utils
 from gi.repository import Gtk4LayerShell as GtkLayerShell  # type: ignore
@@ -42,9 +42,9 @@ EXCLUSIVITY = {
 }
 
 
-class Window(Gtk.Window, BaseWidget):
+class Window(Adw.Window, BaseWidget):
     """
-    Bases: :class:`Gtk.Window`
+    Bases: :class:`Adw.Window`
 
     The top-level widget that contains everything.
 
@@ -113,7 +113,7 @@ class Window(Gtk.Window, BaseWidget):
 
         app = IgnisApp.get_initialized()
 
-        Gtk.Window.__init__(self, application=app)
+        Adw.Window.__init__(self, application=app)
         GtkLayerShell.init_for_window(self)
 
         self._anchor = None
@@ -441,4 +441,4 @@ class Window(Gtk.Window, BaseWidget):
 
     def do_size_allocate(self, width: int, height: int, baseline: int) -> None:
         self.emit("size-changed")
-        return Gtk.Window.do_size_allocate(self, width, height, baseline)
+        return Adw.Window.do_size_allocate(self, width, height, baseline)

@@ -1,4 +1,4 @@
-from gi.repository import Gtk, GObject  # type: ignore
+from gi.repository import Gtk, GObject, Adw  # type: ignore
 from typing import Any
 from collections.abc import Callable
 from ignis.gobject import IgnisGObject, IgnisProperty
@@ -11,7 +11,7 @@ from ignis.css_manager import (
 )
 
 
-class BaseWidget(Gtk.Widget, IgnisGObject):
+class BaseWidget(Adw.Widget, IgnisGObject):
     """
     Bases: :class:`~ignis.gobject.IgnisGObject`.
 
@@ -31,7 +31,7 @@ class BaseWidget(Gtk.Widget, IgnisGObject):
         visible: bool = True,
         **kwargs,
     ):
-        Gtk.Widget.__init__(self)
+        Adw.Widget.__init__(self)
 
         self._style: str | None = None
         self._css_provider: Gtk.CssProvider | None = None

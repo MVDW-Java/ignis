@@ -1,12 +1,12 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from collections.abc import Callable
 from ignis.gobject import IgnisProperty
 
 
-class Entry(Gtk.Entry, BaseWidget):  # type: ignore
+class Entry(Adw.Entry, BaseWidget):  # type: ignore
     """
-    Bases: :class:`Gtk.Entry`
+    Bases: :class:`Adw.Entry`
 
     An input field. To make it work, set the ``kb_mode`` property of the window to ``on_demand`` or ``exclusive``.
 
@@ -26,7 +26,7 @@ class Entry(Gtk.Entry, BaseWidget):  # type: ignore
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.Entry.__init__(self)
+        Adw.Entry.__init__(self)
         self._on_accept: Callable | None = None
         self._on_change: Callable | None = None
         BaseWidget.__init__(self, **kwargs)

@@ -1,12 +1,12 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from collections.abc import Callable
 from ignis.gobject import IgnisProperty
 
 
-class SpinButton(Gtk.SpinButton, BaseWidget):  # type: ignore
+class SpinButton(Adw.SpinButton, BaseWidget):  # type: ignore
     """
-    Bases: :class:`Gtk.SpinButton`
+    Bases: :class:`Adw.SpinButton`
 
     A widget that allows the user to increment or decrement the displayed value within a specified range.
 
@@ -28,7 +28,7 @@ class SpinButton(Gtk.SpinButton, BaseWidget):  # type: ignore
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, min: int | None = None, max: int | None = None, **kwargs):
-        Gtk.SpinButton.__init__(self)
+        Adw.SpinButton.__init__(self)
         self._on_change: Callable | None = None
         self.adjustment = Gtk.Adjustment(
             value=0, lower=0, upper=100, step_increment=1, page_increment=0, page_size=0

@@ -1,12 +1,12 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from .stack_page import StackPage
 from ignis.gobject import IgnisProperty
 
 
-class Stack(Gtk.Stack, BaseWidget):
+class Stack(Adw.Stack, BaseWidget):
     """
-    Bases: :class:`Gtk.Stack`
+    Bases: :class:`Adw.Stack`
 
     Stack is a container which only shows one of its children at a time.
 
@@ -48,7 +48,7 @@ class Stack(Gtk.Stack, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.Stack.__init__(self)
+        Adw.Stack.__init__(self)
         self.override_enum("transition_type", Gtk.StackTransitionType)
         self._child: list[StackPage] = []
         BaseWidget.__init__(self, **kwargs)

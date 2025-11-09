@@ -1,12 +1,12 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from collections.abc import Callable
 from ignis.gobject import IgnisProperty
 
 
-class CheckButton(Gtk.CheckButton, BaseWidget):
+class CheckButton(Adw.CheckButton, BaseWidget):
     """
-    Bases: :class:`Gtk.CheckButton`
+    Bases: :class:`Adw.CheckButton`
 
     A check button. If ``group`` is set, the check button behaves as a radio button.
 
@@ -37,7 +37,7 @@ class CheckButton(Gtk.CheckButton, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.CheckButton.__init__(self)
+        Adw.CheckButton.__init__(self)
         self._on_toggled: Callable | None = None
 
         BaseWidget.__init__(self, **kwargs)

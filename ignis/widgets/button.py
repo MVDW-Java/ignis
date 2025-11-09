@@ -1,12 +1,12 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from collections.abc import Callable
 from ignis.gobject import IgnisProperty
 
 
-class Button(Gtk.Button, BaseWidget):
+class Button(Adw.Button, BaseWidget):
     """
-    Bases: :class:`Gtk.Button`
+    Bases: :class:`Adw.Button`
 
     A button.
 
@@ -27,7 +27,7 @@ class Button(Gtk.Button, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.Button.__init__(self)
+        Adw.Button.__init__(self)
         self._on_click: Callable | None = None
         self._on_right_click: Callable | None = None
         self._on_middle_click: Callable | None = None

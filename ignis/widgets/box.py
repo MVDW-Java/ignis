@@ -1,11 +1,11 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from ignis.gobject import IgnisProperty
 
 
-class Box(Gtk.Box, BaseWidget):
+class Box(Adw.Box, BaseWidget):
     """
-    Bases: :class:`Gtk.Box`.
+    Bases: :class:`Adw.Box`.
 
     The main layout widget.
 
@@ -35,7 +35,7 @@ class Box(Gtk.Box, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.Box.__init__(self)
+        Adw.Box.__init__(self)
         self._child: list[Gtk.Widget] = []
         BaseWidget.__init__(self, **kwargs)
 
@@ -94,3 +94,29 @@ class Box(Gtk.Box, BaseWidget):
             self.set_property("orientation", Gtk.Orientation.VERTICAL)
         else:
             self.set_property("orientation", Gtk.Orientation.HORIZONTAL)
+
+    @IgnisProperty
+    def homogeneous(self) -> bool:
+        """
+        Whether the box arranges children with equal space.
+
+        Default: ``False``.
+        """
+        return self.get_homogeneous()
+
+    @homogeneous.setter
+    def homogeneous(self, value: bool) -> None:
+        self.set_homogeneous(value)
+
+    @IgnisProperty
+    def spacing(self) -> int:
+        """
+        The spacing between children.
+
+        Default: ``0``.
+        """
+        return self.get_spacing()
+
+    @spacing.setter
+    def spacing(self, value: int) -> None:
+        self.set_spacing(value)

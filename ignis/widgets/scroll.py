@@ -1,10 +1,10 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 
 
-class Scroll(Gtk.ScrolledWindow, BaseWidget):
+class Scroll(Adw.ScrolledWindow, BaseWidget):
     """
-    Bases: :class:`Gtk.ScrolledWindow`
+    Bases: :class:`Adw.ScrolledWindow`
 
     A container that accepts a single child widget and makes it scrollable.
 
@@ -25,7 +25,7 @@ class Scroll(Gtk.ScrolledWindow, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.ScrolledWindow.__init__(self)
+        Adw.ScrolledWindow.__init__(self)
         self.override_enum("hscrollbar_policy", Gtk.PolicyType)
         self.override_enum("vscrollbar_policy", Gtk.PolicyType)
         BaseWidget.__init__(self, **kwargs)

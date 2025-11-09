@@ -1,6 +1,6 @@
 import os
 import asyncio
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from ignis.widgets.label import Label
 from ignis.widgets.box import Box
@@ -10,9 +10,9 @@ from ignis import utils
 from ignis.gobject import IgnisProperty
 
 
-class FileChooserButton(Gtk.Button, BaseWidget):
+class FileChooserButton(Adw.Button, BaseWidget):
     """
-    Bases: :class:`Gtk.Button`
+    Bases: :class:`Adw.Button`
 
     A button that allows the user to select a file.
 
@@ -47,7 +47,7 @@ class FileChooserButton(Gtk.Button, BaseWidget):
         label: Label,
         **kwargs,
     ):
-        Gtk.Button.__init__(self)
+        Adw.Button.__init__(self)
         BaseWidget.__init__(self, **kwargs)
 
         self._dialog = dialog

@@ -1,13 +1,13 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from typing import Any
 from collections.abc import Callable
 from ignis.gobject import IgnisProperty
 
 
-class Switch(Gtk.Switch, BaseWidget):
+class Switch(Adw.Switch, BaseWidget):
     """
-    Bases: :class:`Gtk.Switch`
+    Bases: :class:`Adw.Switch`
 
     A switch widget.
 
@@ -26,7 +26,7 @@ class Switch(Gtk.Switch, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.Switch.__init__(self)
+        Adw.Switch.__init__(self)
         self._on_change: Callable | None = None
         self._can_activate: bool = True
         BaseWidget.__init__(self, **kwargs)

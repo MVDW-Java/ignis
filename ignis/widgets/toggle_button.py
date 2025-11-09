@@ -1,12 +1,12 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from collections.abc import Callable
 from ignis.gobject import IgnisProperty
 
 
-class ToggleButton(Gtk.ToggleButton, BaseWidget):
+class ToggleButton(Adw.ToggleButton, BaseWidget):
     """
-    Bases: :class:`Gtk.ToggleButton`
+    Bases: :class:`Adw.ToggleButton`
 
     A toggle button widget.
 
@@ -24,7 +24,7 @@ class ToggleButton(Gtk.ToggleButton, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs) -> None:
-        Gtk.ToggleButton.__init__(self)
+        Adw.ToggleButton.__init__(self)
         self._on_toggled: Callable | None = None
         BaseWidget.__init__(self, **kwargs)
 

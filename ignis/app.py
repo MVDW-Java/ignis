@@ -6,7 +6,7 @@ import shutil
 from typing import Literal
 from ignis import utils
 from loguru import logger
-from gi.repository import Gtk, Gio  # type: ignore
+from gi.repository import Gtk, Gio, Adw  # type: ignore
 from ignis.gobject import IgnisGObject, IgnisProperty, IgnisSignal
 from ignis.exceptions import (
     StylePathNotFoundError,
@@ -39,9 +39,9 @@ def _is_elf_file(path: str) -> bool:
         return magic == b"\x7fELF"
 
 
-class IgnisApp(Gtk.Application, IgnisGObject):
+class IgnisApp(Adw.Application, IgnisGObject):
     """
-    Bases: :class:`Gtk.Application`.
+    Bases: :class:`Adw.Application`.
 
     The application class.
 
@@ -60,7 +60,7 @@ class IgnisApp(Gtk.Application, IgnisGObject):
     _instance: IgnisApp | None = None  # type: ignore
 
     def __init__(self):
-        Gtk.Application.__init__(
+        Adw.Application.__init__(
             self,
             application_id="com.github.linkfrg.ignis",
             flags=Gio.ApplicationFlags.DEFAULT_FLAGS,
@@ -110,14 +110,14 @@ class IgnisApp(Gtk.Application, IgnisGObject):
             AppNotInitializedError: If the application is not initialized yet.
             TypeError: If the default application is not an instance of :class:`IgnisApp`.
         """
-        gapp = Gtk.Application.get_default()
+        gapp = Adw.Application.get_default()
 
         if not gapp:
             raise AppNotInitializedError()
 
         if not isinstance(gapp, IgnisApp):
             raise TypeError(
-                "The default Gtk.Application is not an instance of IgnisApp"
+                "The default Adw.Application is not an instance of IgnisApp"
             )
 
         return gapp

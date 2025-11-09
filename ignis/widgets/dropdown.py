@@ -1,12 +1,12 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from collections.abc import Callable
 from ignis.gobject import IgnisProperty
 
 
-class DropDown(Gtk.DropDown, BaseWidget):
+class DropDown(Adw.DropDown, BaseWidget):
     """
-    Bases: :class:`Gtk.DropDown`
+    Bases: :class:`Adw.DropDown`
 
     A widget that allows the user to choose an item from a list of options.
 
@@ -25,7 +25,7 @@ class DropDown(Gtk.DropDown, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.DropDown.__init__(self)
+        Adw.DropDown.__init__(self)
         self._items: list[str] = []
         self._on_selected: Callable | None = None
         BaseWidget.__init__(self, **kwargs)
@@ -46,7 +46,7 @@ class DropDown(Gtk.DropDown, BaseWidget):
         for i in value:
             model.append(i)
 
-        self.model = model
+        self.set_model(model)
 
     @IgnisProperty
     def on_selected(self) -> Callable | None:
@@ -66,6 +66,7 @@ class DropDown(Gtk.DropDown, BaseWidget):
     @IgnisProperty
     def selected(self) -> str:
         """
-        The selected string. It is a shortcut for ``self.selected_item.props.string``.
+        The selected string. It is a shortcut for ``self.get_selected_item().props.string``.
         """
-        return self.selected_item.props.string
+        selected_item = self.get_selected_item()
+        return selected_item.props.string if selected_item else ""

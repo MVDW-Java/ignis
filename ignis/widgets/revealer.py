@@ -1,10 +1,10 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 
 
-class Revealer(Gtk.Revealer, BaseWidget):
+class Revealer(Adw.Revealer, BaseWidget):
     """
-    Bases: :class:`Gtk.Revealer`
+    Bases: :class:`Adw.Revealer`
 
     A container that animates the transition of its child from invisible to visible.
 
@@ -40,7 +40,7 @@ class Revealer(Gtk.Revealer, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.Revealer.__init__(self)
+        Adw.Revealer.__init__(self)
         self.override_enum("transition_type", Gtk.RevealerTransitionType)
         BaseWidget.__init__(self, **kwargs)
 

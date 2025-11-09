@@ -1,12 +1,12 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from collections.abc import Callable
 from ignis.gobject import IgnisProperty
 
 
-class ListBoxRow(Gtk.ListBoxRow, BaseWidget):
+class ListBoxRow(Adw.ListBoxRow, BaseWidget):
     """
-    Bases: :class:`Gtk.ListBoxRow`
+    Bases: :class:`Adw.ListBoxRow`
 
     A row for :class:`~ignis.widgets.listbox.ListBox`.
 
@@ -26,7 +26,7 @@ class ListBoxRow(Gtk.ListBoxRow, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.ListBoxRow.__init__(self)
+        Adw.ListBoxRow.__init__(self)
         self._on_activate: Callable | None = None
         self._selected: bool = False
         BaseWidget.__init__(self, **kwargs)

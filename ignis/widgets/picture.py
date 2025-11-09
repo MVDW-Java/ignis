@@ -1,13 +1,13 @@
 import os
 from ignis.base_widget import BaseWidget
-from gi.repository import Gtk, GdkPixbuf, Gdk  # type: ignore
+from gi.repository import Gtk, GdkPixbuf, Gdk, Adw  # type: ignore
 from ignis import utils
 from ignis.gobject import IgnisProperty
 
 
-class Picture(Gtk.Picture, BaseWidget):
+class Picture(Adw.Image, BaseWidget):
     """
-    Bases: :class:`Gtk.Picture`
+    Bases: :class:`Adw.Image`
 
     A widget that displays an image at its native aspect ratio.
 
@@ -40,7 +40,7 @@ class Picture(Gtk.Picture, BaseWidget):
     def __init__(
         self, content_fit: str = "contain", width: int = -1, height: int = -1, **kwargs
     ):
-        Gtk.Picture.__init__(self)
+        Adw.Image.__init__(self)
         self.override_enum("content_fit", Gtk.ContentFit)
 
         # avoid custom setters to avoid running the __draw function multiple times during initialization

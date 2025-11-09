@@ -1,11 +1,11 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from ignis.gobject import IgnisProperty
 
 
-class Grid(Gtk.Grid, BaseWidget):
+class Grid(Adw.Grid, BaseWidget):
     """
-    Bases: :class:`Gtk.Grid`
+    Bases: :class:`Adw.Grid`
 
     A container that arranges its child widgets in rows and columns.
 
@@ -33,7 +33,7 @@ class Grid(Gtk.Grid, BaseWidget):
     def __init__(
         self, column_num: int | None = None, row_num: int | None = None, **kwargs
     ):
-        Gtk.Grid.__init__(self)
+        Adw.Grid.__init__(self)
         self._column_num: int | None = column_num
         self._row_num: int | None = row_num
         self._child: list[Gtk.Widget] = []

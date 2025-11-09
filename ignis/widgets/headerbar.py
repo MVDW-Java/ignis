@@ -1,10 +1,10 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 
 
-class HeaderBar(Gtk.HeaderBar, BaseWidget):
+class HeaderBar(Adw.HeaderBar, BaseWidget):
     """
-    Bases: :class:`Gtk.HeaderBar`
+    Bases: :class:`Adw.HeaderBar`
 
     A custom title bar with decorations like a close button and title.
 
@@ -22,5 +22,5 @@ class HeaderBar(Gtk.HeaderBar, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.HeaderBar.__init__(self)
+        Adw.HeaderBar.__init__(self)
         BaseWidget.__init__(self, **kwargs)

@@ -1,11 +1,11 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from ignis.gobject import IgnisProperty
 
 
-class Separator(Gtk.Separator, BaseWidget):
+class Separator(Adw.Separator, BaseWidget):
     """
-    Bases: :class:`Gtk.Separator`
+    Bases: :class:`Adw.Separator`
 
     A separator widget.
 
@@ -23,7 +23,7 @@ class Separator(Gtk.Separator, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.Separator.__init__(self)
+        Adw.Separator.__init__(self)
         BaseWidget.__init__(self, **kwargs)
 
     @IgnisProperty

@@ -1,11 +1,11 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from ignis.gobject import IgnisProperty
 
 
-class CenterBox(Gtk.CenterBox, BaseWidget):
+class CenterBox(Adw.CenterBox, BaseWidget):
     """
-    Bases: :class:`Gtk.CenterBox`
+    Bases: :class:`Adw.CenterBox`
 
     A box widget that contains three widgets, which are placed at the start, center, and end of the container.
 
@@ -26,7 +26,7 @@ class CenterBox(Gtk.CenterBox, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.CenterBox.__init__(self)
+        Adw.CenterBox.__init__(self)
         BaseWidget.__init__(self, **kwargs)
 
     @IgnisProperty

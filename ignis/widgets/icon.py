@@ -1,13 +1,13 @@
 import os
 from ignis.base_widget import BaseWidget
-from gi.repository import Gtk, GdkPixbuf, Gdk  # type: ignore
+from gi.repository import Gtk, GdkPixbuf, Gdk, Adw  # type: ignore
 from ignis import utils
 from ignis.gobject import IgnisProperty
 
 
-class Icon(Gtk.Image, BaseWidget):
+class Icon(Adw.Image, BaseWidget):
     """
-    Bases: :class:`Gtk.Image`
+    Bases: :class:`Adw.Image`
 
     A widget that displays images or icons in a 1:1 ratio.
 
@@ -29,7 +29,7 @@ class Icon(Gtk.Image, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, pixel_size: int = -1, **kwargs):
-        Gtk.Image.__init__(self)
+        Adw.Image.__init__(self)
         self.pixel_size = pixel_size  # this need to set pixel_size BEFORE image
         self._image: str | GdkPixbuf.Pixbuf | None = None
         BaseWidget.__init__(self, **kwargs)

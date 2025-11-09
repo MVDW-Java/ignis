@@ -1,12 +1,12 @@
-from gi.repository import Gtk, Gdk  # type: ignore
+from gi.repository import Gtk, Gdk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from collections.abc import Callable
 from ignis.gobject import IgnisProperty
 
 
-class Scale(Gtk.Scale, BaseWidget):
+class Scale(Adw.Scale, BaseWidget):
     """
-    Bases: :class:`Gtk.Scale`
+    Bases: :class:`Adw.Scale`
 
     A slider widget.
 
@@ -40,7 +40,7 @@ class Scale(Gtk.Scale, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.Scale.__init__(self)
+        Adw.Scale.__init__(self)
         self.adjustment = Gtk.Adjustment(
             value=0, lower=0, upper=100, step_increment=1, page_increment=0, page_size=0
         )

@@ -1,12 +1,12 @@
-from gi.repository import Gtk  # type: ignore
+from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 from ignis.widgets.listboxrow import ListBoxRow
 from ignis.gobject import IgnisProperty
 
 
-class ListBox(Gtk.ListBox, BaseWidget):
+class ListBox(Adw.ListBox, BaseWidget):
     """
-    Bases: :class:`Gtk.ListBox`
+    Bases: :class:`Adw.ListBox`
 
     A vertical list that allows selecting rows. Well suited, for example, for a navigation bar.
 
@@ -33,11 +33,11 @@ class ListBox(Gtk.ListBox, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.ListBox.__init__(self)
+        Adw.ListBox.__init__(self)
         self._rows: list[Gtk.Widget] = []
         BaseWidget.__init__(self, **kwargs)
 
-        self.connect("row_activated", self.__on_row_activated)
+        self.connect("row-activated", self.__on_row_activated)
 
     def __on_row_activated(self, x, row):
         if isinstance(row, ListBoxRow):

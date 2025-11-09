@@ -3,9 +3,9 @@ from ignis.base_widget import BaseWidget
 from ignis.gobject import IgnisProperty
 
 
-class Grid(Adw.Grid, BaseWidget):
+class Grid(Gtk.Grid, BaseWidget):
     """
-    Bases: :class:`Adw.Grid`
+    Bases: :class:`Gtk.Grid`
 
     A container that arranges its child widgets in rows and columns.
 
@@ -33,7 +33,7 @@ class Grid(Adw.Grid, BaseWidget):
     def __init__(
         self, column_num: int | None = None, row_num: int | None = None, **kwargs
     ):
-        Adw.Grid.__init__(self)
+        Gtk.Grid.__init__(self)
         self._column_num: int | None = column_num
         self._row_num: int | None = row_num
         self._child: list[Gtk.Widget] = []

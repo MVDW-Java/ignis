@@ -3,9 +3,9 @@ from ignis.base_widget import BaseWidget
 from ignis.gobject import IgnisProperty
 
 
-class Box(Adw.Box, BaseWidget):
+class Box(Gtk.Box, BaseWidget):
     """
-    Bases: :class:`Adw.Box`.
+    Bases: :class:`Gtk.Box`.
 
     The main layout widget.
 
@@ -35,7 +35,7 @@ class Box(Adw.Box, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Adw.Box.__init__(self)
+        Gtk.Box.__init__(self)
         self._child: list[Gtk.Widget] = []
         BaseWidget.__init__(self, **kwargs)
 

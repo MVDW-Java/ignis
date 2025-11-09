@@ -4,9 +4,9 @@ from ignis.gobject import IgnisProperty
 from ignis.menu_model import IgnisMenuModel
 
 
-class PopoverMenu(Adw.PopoverMenu, BaseWidget):
+class PopoverMenu(Gtk.PopoverMenu, BaseWidget):
     """
-    Bases: :class:`Adw.PopoverMenu`
+    Bases: :class:`Gtk.PopoverMenu`
 
     A dropdown menu.
     It must be added as a child to a container.
@@ -53,7 +53,7 @@ class PopoverMenu(Adw.PopoverMenu, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Adw.PopoverMenu.__init__(self)
+        Gtk.PopoverMenu.__init__(self)
         self._model: IgnisMenuModel | None = None
         BaseWidget.__init__(self, visible=False, **kwargs)
 

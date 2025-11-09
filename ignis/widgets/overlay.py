@@ -3,9 +3,9 @@ from ignis.base_widget import BaseWidget
 from ignis.gobject import IgnisProperty
 
 
-class Overlay(Adw.Overlay, BaseWidget):
+class Overlay(Gtk.Overlay, BaseWidget):
     """
-    Bases: :class:`Adw.Overlay`
+    Bases: :class:`Gtk.Overlay`
 
     A container that places its children on top of each other.
     The ``child`` property is the main child, on which other widgets defined in ``overlays`` will be placed on top.
@@ -29,7 +29,7 @@ class Overlay(Adw.Overlay, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Adw.Overlay.__init__(self)
+        Gtk.Overlay.__init__(self)
         self._overlays: list[Gtk.Widget] = []
         BaseWidget.__init__(self, **kwargs)
 

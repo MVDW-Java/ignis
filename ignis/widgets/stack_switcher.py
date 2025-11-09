@@ -2,9 +2,9 @@ from gi.repository import Gtk, Adw  # type: ignore
 from ignis.base_widget import BaseWidget
 
 
-class StackSwitcher(Adw.StackSwitcher, BaseWidget):
+class StackSwitcher(Gtk.StackSwitcher, BaseWidget):
     """
-    Bases: :class:`Adw.StackSwitcher`
+    Bases: :class:`Gtk.StackSwitcher`
 
     The StackSwitcher shows a row of buttons to switch between :class:`~ignis.widgets.Stack` pages.
 
@@ -16,5 +16,5 @@ class StackSwitcher(Adw.StackSwitcher, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Adw.StackSwitcher.__init__(self)
+        Gtk.StackSwitcher.__init__(self)
         BaseWidget.__init__(self, **kwargs)

@@ -11,7 +11,7 @@ from ignis.css_manager import (
 )
 
 
-class BaseWidget(Adw.Widget, IgnisGObject):
+class BaseWidget(Gtk.Widget, IgnisGObject):
     """
     Bases: :class:`~ignis.gobject.IgnisGObject`.
 
@@ -31,7 +31,7 @@ class BaseWidget(Adw.Widget, IgnisGObject):
         visible: bool = True,
         **kwargs,
     ):
-        Adw.Widget.__init__(self)
+        Gtk.Widget.__init__(self)
 
         self._style: str | None = None
         self._css_provider: Gtk.CssProvider | None = None

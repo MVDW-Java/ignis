@@ -4,9 +4,9 @@ from collections.abc import Callable
 from ignis.gobject import IgnisProperty
 
 
-class Scale(Adw.Scale, BaseWidget):
+class Scale(Gtk.Scale, BaseWidget):
     """
-    Bases: :class:`Adw.Scale`
+    Bases: :class:`Gtk.Scale`
 
     A slider widget.
 
@@ -40,13 +40,17 @@ class Scale(Adw.Scale, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Adw.Scale.__init__(self)
+        Gtk.Scale.__init__(self)
         self.adjustment = Gtk.Adjustment(
             value=0, lower=0, upper=100, step_increment=1, page_increment=0, page_size=0
         )
         self._dragging: bool = False
         self._on_change: Callable | None = None
         self.override_enum("value_pos", Gtk.PositionType)
+
+        # Apply Adwaita styling
+        self.add_css_class("pill")
+
         BaseWidget.__init__(self, **kwargs)
 
         self.connect("value-changed", lambda x: self.__invoke_on_change())

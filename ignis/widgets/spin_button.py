@@ -4,9 +4,9 @@ from collections.abc import Callable
 from ignis.gobject import IgnisProperty
 
 
-class SpinButton(Adw.SpinButton, BaseWidget):  # type: ignore
+class SpinButton(Gtk.SpinButton, BaseWidget):  # type: ignore
     """
-    Bases: :class:`Adw.SpinButton`
+    Bases: :class:`Gtk.SpinButton`
 
     A widget that allows the user to increment or decrement the displayed value within a specified range.
 
@@ -28,13 +28,17 @@ class SpinButton(Adw.SpinButton, BaseWidget):  # type: ignore
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, min: int | None = None, max: int | None = None, **kwargs):
-        Adw.SpinButton.__init__(self)
+        Gtk.SpinButton.__init__(self)
         self._on_change: Callable | None = None
         self.adjustment = Gtk.Adjustment(
             value=0, lower=0, upper=100, step_increment=1, page_increment=0, page_size=0
         )
         self.min = min
         self.max = max
+
+        # Apply Adwaita styling
+        self.add_css_class("pill")
+
         BaseWidget.__init__(self, **kwargs)
 
         self.connect("value-changed", self.__invoke_on_change)

@@ -1,10 +1,10 @@
-from gi.repository import Gtk, Adw  # type: ignore
+from gi.repository import Gtk  # type: ignore
 from ignis.base_widget import BaseWidget
 
 
-class Calendar(Adw.Calendar, BaseWidget):
+class Calendar(Gtk.Calendar, BaseWidget):
     """
-    Bases: :class:`Adw.Calendar`
+    Bases: :class:`Gtk.Calendar`
 
     A calendar.
 
@@ -30,5 +30,5 @@ class Calendar(Adw.Calendar, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Adw.Calendar.__init__(self)
+        Gtk.Calendar.__init__(self)
         BaseWidget.__init__(self, **kwargs)

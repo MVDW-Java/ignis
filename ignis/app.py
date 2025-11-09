@@ -6,6 +6,9 @@ import shutil
 from typing import Literal
 from ignis import utils
 from loguru import logger
+import gi
+
+gi.require_version("Adw", "1")
 from gi.repository import Gtk, Gio, Adw  # type: ignore
 from ignis.gobject import IgnisGObject, IgnisProperty, IgnisSignal
 from ignis.exceptions import (

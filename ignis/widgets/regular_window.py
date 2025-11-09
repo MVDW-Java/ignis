@@ -1,4 +1,5 @@
-from gi.repository import Gtk, Adw  # type: ignore
+import cairo
+from gi.repository import Gtk  # type: ignore
 from ignis.base_widget import BaseWidget
 from ignis.window_manager import WindowManager
 from ignis.exceptions import WindowNotFoundError
@@ -7,9 +8,9 @@ from ignis.gobject import IgnisProperty
 window_manager = WindowManager.get_default()
 
 
-class RegularWindow(Adw.Window, BaseWidget):
+class RegularWindow(Gtk.Window, BaseWidget):
     """
-    Bases: :class:`Adw.Window`
+    Bases: :class:`Gtk.Window`
 
     A standard application window.
 
@@ -31,7 +32,7 @@ class RegularWindow(Adw.Window, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, namespace: str, **kwargs):
-        Adw.Window.__init__(self)
+        Gtk.Window.__init__(self)
         BaseWidget.__init__(self, **kwargs)
 
         self._namespace = namespace

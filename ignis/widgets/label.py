@@ -1,10 +1,10 @@
-from gi.repository import Gtk, Pango, Adw  # type: ignore
+from gi.repository import Gtk, Pango  # type: ignore
 from ignis.base_widget import BaseWidget
 
 
-class Label(Adw.Label, BaseWidget):
+class Label(Gtk.Label, BaseWidget):
     """
-    Bases: :class:`Adw.Label`
+    Bases: :class:`Gtk.Label`
 
     A widget that displays a small amount of text.
 
@@ -50,7 +50,7 @@ class Label(Adw.Label, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Adw.Label.__init__(self)
+        Gtk.Label.__init__(self)
         self.override_enum("justify", Gtk.Justification)
         self.override_enum("wrap_mode", Pango.WrapMode)
         self.override_enum("ellipsize", Pango.EllipsizeMode)

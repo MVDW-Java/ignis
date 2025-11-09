@@ -10,9 +10,9 @@ from ignis import utils
 from ignis.gobject import IgnisProperty
 
 
-class FileChooserButton(Adw.Button, BaseWidget):
+class FileChooserButton(Gtk.Button, BaseWidget):
     """
-    Bases: :class:`Adw.Button`
+    Bases: :class:`Gtk.Button`
 
     A button that allows the user to select a file.
 
@@ -47,7 +47,11 @@ class FileChooserButton(Adw.Button, BaseWidget):
         label: Label,
         **kwargs,
     ):
-        Adw.Button.__init__(self)
+        Gtk.Button.__init__(self)
+
+        # Apply Adwaita styling
+        self.add_css_class("pill")
+
         BaseWidget.__init__(self, **kwargs)
 
         self._dialog = dialog

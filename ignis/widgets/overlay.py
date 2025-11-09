@@ -31,6 +31,10 @@ class Overlay(Gtk.Overlay, BaseWidget):
     def __init__(self, **kwargs):
         Gtk.Overlay.__init__(self)
         self._overlays: list[Gtk.Widget] = []
+
+        # Apply Adwaita styling
+        self.add_css_class("view")
+
         BaseWidget.__init__(self, **kwargs)
 
     @IgnisProperty

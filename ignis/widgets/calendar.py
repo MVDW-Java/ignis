@@ -31,4 +31,8 @@ class Calendar(Gtk.Calendar, BaseWidget):
 
     def __init__(self, **kwargs):
         Gtk.Calendar.__init__(self)
+
+        # Apply Adwaita styling
+        self.add_css_class("card")
+
         BaseWidget.__init__(self, **kwargs)

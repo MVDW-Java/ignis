@@ -4,9 +4,9 @@ from .stack_page import StackPage
 from ignis.gobject import IgnisProperty
 
 
-class Stack(Gtk.Stack, BaseWidget):
+class Stack(Adw.ViewStack, BaseWidget):
     """
-    Bases: :class:`Gtk.Stack`
+    Bases: :class:`Adw.ViewStack`
 
     Stack is a container which only shows one of its children at a time.
 
@@ -48,7 +48,7 @@ class Stack(Gtk.Stack, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Gtk.Stack.__init__(self)
+        Adw.ViewStack.__init__(self)
         self.override_enum("transition_type", Gtk.StackTransitionType)
         self._child: list[StackPage] = []
         BaseWidget.__init__(self, **kwargs)
@@ -66,4 +66,4 @@ class Stack(Gtk.Stack, BaseWidget):
             self.remove(i.child)
 
         for i in value:
-            self.add_titled(i.child, None, i.title)
+            self.add_titled(i.child, i.title, i.title)

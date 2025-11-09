@@ -37,6 +37,10 @@ class Box(Gtk.Box, BaseWidget):
     def __init__(self, **kwargs):
         Gtk.Box.__init__(self)
         self._child: list[Gtk.Widget] = []
+
+        # Apply Adwaita styling
+        self.add_css_class("view")
+
         BaseWidget.__init__(self, **kwargs)
 
     @IgnisProperty

@@ -55,6 +55,10 @@ class PopoverMenu(Gtk.PopoverMenu, BaseWidget):
     def __init__(self, **kwargs):
         Gtk.PopoverMenu.__init__(self)
         self._model: IgnisMenuModel | None = None
+
+        # Apply Adwaita styling
+        self.add_css_class("menu")
+
         BaseWidget.__init__(self, visible=False, **kwargs)
 
     @IgnisProperty

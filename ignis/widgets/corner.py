@@ -37,6 +37,10 @@ class Corner(Gtk.DrawingArea, BaseWidget):
     def __init__(self, **kwargs):
         Gtk.DrawingArea.__init__(self)
         self._orientation: Orientation = "top-left"
+
+        # Apply Adwaita styling
+        self.add_css_class("card")
+
         BaseWidget.__init__(self, **kwargs)
 
         self.set_draw_func(self.__on_draw)

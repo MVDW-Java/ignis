@@ -37,6 +37,10 @@ class Grid(Gtk.Grid, BaseWidget):
         self._column_num: int | None = column_num
         self._row_num: int | None = row_num
         self._child: list[Gtk.Widget] = []
+
+        # Apply Adwaita styling
+        self.add_css_class("view")
+
         BaseWidget.__init__(self, **kwargs)
 
     @IgnisProperty

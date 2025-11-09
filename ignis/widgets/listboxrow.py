@@ -29,6 +29,10 @@ class ListBoxRow(Gtk.ListBoxRow, BaseWidget):
         Gtk.ListBoxRow.__init__(self)
         self._on_activate: Callable | None = None
         self._selected: bool = False
+
+        # Apply Adwaita styling for boxed list rows
+        self.add_css_class("activatable")
+
         BaseWidget.__init__(self, **kwargs)
 
     @IgnisProperty

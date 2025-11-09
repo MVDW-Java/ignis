@@ -9,6 +9,9 @@ class ListBox(Gtk.ListBox, BaseWidget):
     Bases: :class:`Gtk.ListBox`
 
     A vertical list that allows selecting rows. Well suited, for example, for a navigation bar.
+    Applies Adwaita boxed list styling by default.
+
+    A vertical list that allows selecting rows. Well suited, for example, for a navigation bar.
 
     Args:
         **kwargs: Properties to set.
@@ -35,6 +38,10 @@ class ListBox(Gtk.ListBox, BaseWidget):
     def __init__(self, **kwargs):
         Gtk.ListBox.__init__(self)
         self._rows: list[Gtk.Widget] = []
+
+        # Apply Adwaita boxed list styling
+        self.add_css_class("boxed-list")
+
         BaseWidget.__init__(self, **kwargs)
 
         self.connect("row-activated", self.__on_row_activated)

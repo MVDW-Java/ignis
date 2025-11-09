@@ -54,4 +54,8 @@ class Label(Gtk.Label, BaseWidget):
         self.override_enum("justify", Gtk.Justification)
         self.override_enum("wrap_mode", Pango.WrapMode)
         self.override_enum("ellipsize", Pango.EllipsizeMode)
+
+        # Apply Adwaita styling
+        self.add_css_class("body")
+
         BaseWidget.__init__(self, **kwargs)

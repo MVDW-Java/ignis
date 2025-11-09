@@ -61,7 +61,11 @@ class Fixed(Gtk.Fixed, BaseWidget):
 
     def __init__(self, **kwargs):
         Gtk.Fixed.__init__(self)
-        self._child: list[FixedChild] = []
+        self._children: list[FixedChild] = []
+
+        # Apply Adwaita styling
+        self.add_css_class("view")
+
         BaseWidget.__init__(self, **kwargs)
 
     @IgnisProperty

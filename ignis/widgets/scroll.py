@@ -28,4 +28,8 @@ class Scroll(Gtk.ScrolledWindow, BaseWidget):
         Gtk.ScrolledWindow.__init__(self)
         self.override_enum("hscrollbar_policy", Gtk.PolicyType)
         self.override_enum("vscrollbar_policy", Gtk.PolicyType)
+
+        # Apply Adwaita styling
+        self.add_css_class("view")
+
         BaseWidget.__init__(self, **kwargs)

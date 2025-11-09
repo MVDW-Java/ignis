@@ -4,9 +4,9 @@ from collections.abc import Callable
 from ignis.gobject import IgnisProperty
 
 
-class Button(Adw.Button, BaseWidget):
+class Button(Gtk.Button, BaseWidget):
     """
-    Bases: :class:`Adw.Button`
+    Bases: :class:`Gtk.Button`
 
     A button.
 
@@ -27,13 +27,16 @@ class Button(Adw.Button, BaseWidget):
     __gproperties__ = {**BaseWidget.gproperties}
 
     def __init__(self, **kwargs):
-        Adw.Button.__init__(self)
+        Gtk.Button.__init__(self)
         self._on_click: Callable | None = None
         self._on_right_click: Callable | None = None
         self._on_middle_click: Callable | None = None
 
         self.__right_click_controller: Gtk.GestureClick | None = None
         self.__middle_click_controller: Gtk.GestureClick | None = None
+
+        # Apply Adwaita styling
+        self.add_css_class("pill")
 
         BaseWidget.__init__(self, **kwargs)
         self.connect("clicked", lambda x: self.on_click(x) if self.on_click else None)
